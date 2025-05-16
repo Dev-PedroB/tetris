@@ -9,6 +9,27 @@ body {
   color: white;
 }
 
+.container {
+  display: flex;
+  gap: 20px;
+}
+
 canvas {
   border: 2px solid #fff;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar .next canvas {
+  background-color: #000;
+  display: block;
+  border: 1px solid #888;
+}
+
+.sidebar .scoreboard {
+  font-size: 1rem;
 }
