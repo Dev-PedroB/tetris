@@ -2,25 +2,28 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Tetris Clone</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <canvas id="tetris" width="240" height="400"></canvas>
-    <div class="sidebar">
-      <div class="next">
-        <h3>Próxima Peça</h3>
-        <canvas id="next" width="80" height="80"></canvas>
-      </div>
-      <div class="scoreboard">
-        <p>Pontuação: <span id="score">0</span></p>
-        <p>Nível: <span id="level">0</span></p>
-        <p>Linhas: <span id="lines">0</span></p>
+  <div class="game-wrapper">
+    <div class="container">
+      <canvas id="tetris" width="240" height="400"></canvas>
+      <div class="sidebar">
+        <div class="next">
+          <h3>Próxima Peça</h3>
+          <canvas id="next" width="80" height="80"></canvas>
+        </div>
+        <div class="scoreboard">
+          <p>Pontuação: <span id="score">0</span></p>
+          <p>Nível: <span id="level">0</span></p>
+          <p>Linhas: <span id="lines">0</span></p>
+        </div>
       </div>
     </div>
   </div>
   <script type="module" src="main.js"></script>
+  <script src="mobile.js"></script>
 </body>
 </html>

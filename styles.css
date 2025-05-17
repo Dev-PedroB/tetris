@@ -7,6 +7,7 @@ body {
   margin: 0;
   font-family: sans-serif;
   color: white;
+  overflow: hidden;
 }
 
 .container {
@@ -32,4 +33,94 @@ canvas {
 
 .sidebar .scoreboard {
   font-size: 1rem;
+}
+
+.touch-controls {
+  display: none;
+  width: 100%;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.control-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.control-btn {
+  width: 70px;
+  height: 70px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid #fff;
+  border-radius: 15px;
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  font-size: 24px;
+  touch-action: manipulation;
+  font-weight: bold;
+  transition: background-color 0.15s;
+}
+
+.control-btn:active {
+  background-color: rgba(255, 255, 255, 0.6);
+  transform: scale(0.95);
+}
+
+#move-down.pressed {
+  background-color: rgba(255, 255, 255, 0.6);
+  transform: scale(0.95);
+}
+
+#rotate-btn {
+  width: 120px;
+}
+
+@media screen and (max-width: 600px) {
+  .game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: row; 
+    width: 100%;
+    max-width: 350px;
+    justify-content: center;
+    gap: 10px; 
+  }
+  
+  #tetris {
+    width: 200px; 
+    height: 333px; 
+  }
+  
+  .sidebar {
+    width: 80px; 
+    margin-top: 0; 
+  }
+  
+  .sidebar .next canvas {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .sidebar .scoreboard {
+    font-size: 0.9rem; 
+  }
+  
+  .touch-controls {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+  }
 }

@@ -111,6 +111,16 @@ function playerRotate(dir) {
   }
 }
 
+function playerHardDrop() {
+  while (!collide(arena, { 
+    matrix: player.matrix, 
+    pos: { x: player.pos.x, y: player.pos.y + 1 } 
+  })) {
+    player.pos.y++;
+  }
+  playerDrop();
+}
+
 let dropCounter = 0;
 let lastTime = 0;
 
@@ -126,9 +136,14 @@ function update(time = 0) {
 }
 
 document.addEventListener('keydown', event => {
+  if (['ArrowLeft', 'ArrowRight', 'ArrowDown', 'ArrowUp', 'q', 'w'].includes(event.key)) {
+    event.preventDefault();
+  }
+  
   if (event.key === 'ArrowLeft') playerMove(-1);
   else if (event.key === 'ArrowRight') playerMove(1);
   else if (event.key === 'ArrowDown') playerDrop();
+  else if (event.key === 'ArrowUp') playerHardDrop();
   else if (event.key === 'q') playerRotate(-1);
   else if (event.key === 'w') playerRotate(1);
 });
