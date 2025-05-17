@@ -10,6 +10,106 @@ body {
   overflow: hidden;
 }
 
+.game-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 100;
+}
+
+#game-over-screen {
+  display: none;
+}
+
+.tetris-title {
+  font-size: 5rem;
+  margin-bottom: 0;
+  letter-spacing: 5px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  text-align: center; 
+  width: 100%; 
+}
+
+.clone-subtitle {
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 40px;
+  color: #888;
+  text-align: center; 
+  width: 100%; 
+}
+
+.game-button {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 15px 40px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.game-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.game-button:active {
+  transform: scale(0.95);
+}
+
+.game-stats {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px 40px;
+  border-radius: 10px;
+  border: 1px solid #444;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.game-stats p {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+/* Animação para o título */
+@keyframes colorCycle {
+  0% { text-shadow: 0 0 10px rgba(255, 13, 114, 0.8); }
+  16% { text-shadow: 0 0 10px rgba(13, 194, 255, 0.8); }
+  33% { text-shadow: 0 0 10px rgba(13, 255, 114, 0.8); }
+  50% { text-shadow: 0 0 10px rgba(245, 56, 255, 0.8); }
+  66% { text-shadow: 0 0 10px rgba(255, 142, 13, 0.8); }
+  83% { text-shadow: 0 0 10px rgba(255, 225, 56, 0.8); }
+  100% { text-shadow: 0 0 10px rgba(255, 13, 114, 0.8); }
+}
+
+.tetris-title span {
+  display: inline-block;
+  animation: colorCycle 5s infinite;
+  animation-delay: calc(var(--i) * 0.5s);
+}
+
+.tetris-title span:nth-child(1) { --i: 0; }
+.tetris-title span:nth-child(2) { --i: 1; }
+.tetris-title span:nth-child(3) { --i: 2; }
+.tetris-title span:nth-child(4) { --i: 3; }
+.tetris-title span:nth-child(5) { --i: 4; }
+.tetris-title span:nth-child(6) { --i: 5; }
+
+.game-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
 .container {
   display: flex;
   gap: 20px;
@@ -80,6 +180,20 @@ canvas {
 }
 
 @media screen and (max-width: 600px) {
+
+  .tetris-title {
+    font-size: 3.5rem; 
+    letter-spacing: 3px;
+  }
+  
+  .clone-subtitle {
+    font-size: 1.5rem;
+  }
+  
+  .game-screen {
+    padding: 0 15px; 
+    box-sizing: border-box;
+  }
   .game-wrapper {
     display: flex;
     flex-direction: column;

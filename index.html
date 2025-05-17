@@ -8,6 +8,32 @@
 </head>
 <body>
   <div class="game-wrapper">
+
+    <!-- Tela inicial -->
+<div id="start-screen" class="game-screen">
+  <h1 class="tetris-title">
+    <span style="color: #FF0D72;">T</span>
+    <span style="color: #0DC2FF;">E</span>
+    <span style="color: #0DFF72;">T</span>
+    <span style="color: #F538FF;">R</span>
+    <span style="color: #FF8E0D;">I</span>
+    <span style="color: #FFE138;">S</span>
+  </h1>
+  <h2 class="clone-subtitle">Clone</h2>
+  <button id="start-button" class="game-button">Jogar</button>
+</div>
+
+<!-- Tela de Game Over -->
+<div id="game-over-screen" class="game-screen">
+  <h2>Game Over</h2>
+  <div class="game-stats">
+    <p>Nível: <span id="final-level">0</span></p>
+    <p>Pontuação: <span id="final-score">0</span></p>
+    <p>Linhas: <span id="final-lines">0</span></p>
+  </div>
+  <button id="restart-button" class="game-button">Jogar Novamente</button>
+</div>
+
     <div class="container">
       <canvas id="tetris" width="240" height="400"></canvas>
       <div class="sidebar">
@@ -23,6 +49,7 @@
       </div>
     </div>
   </div>
+  <script src="screens.js"></script>
   <script type="module" src="main.js"></script>
   <script src="mobile.js"></script>
 </body>

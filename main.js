@@ -27,6 +27,25 @@ const player = {
   dropInterval: 1000
 };
 
+window.gameActive = false;
+
+window.startGame = function() {
+  window.gameActive = true;
+  playerReset();
+  update(0);
+};
+
+window.resetGame = function() {
+  arena.forEach(row => row.fill(0));
+  player.score = 0;
+  player.lines = 0;
+  player.level = 0;
+  player.dropInterval = 1000;
+  updateScore();
+  window.gameActive = true;
+  playerReset();
+};
+
 function updateScore() {
   document.getElementById('score').innerText = player.score;
   document.getElementById('level').innerText = player.level;
@@ -68,11 +87,17 @@ function playerReset() {
   player.pos.x = Math.floor(arena[0].length / 2) - Math.floor(player.matrix[0].length / 2);
 
   if (collide(arena, player)) {
-    arena.forEach(row => row.fill(0));
-    player.score = 0;
-    player.lines = 0;
-    player.level = 0;
-    player.dropInterval = 1000;
+    if (gameActive) {
+      gameActive = false;
+      window.showGameOver(player.level, player.score, player.lines);
+    } else {
+      arena.forEach(row => row.fill(0));
+      player.score = 0;
+      player.lines = 0;
+      player.level = 0;
+      player.dropInterval = 1000;
+      updateScore();
+    }
   }
   updateScore();
 }
@@ -127,10 +152,14 @@ let lastTime = 0;
 function update(time = 0) {
   const deltaTime = time - lastTime;
   lastTime = time;
-  dropCounter += deltaTime;
-  if (dropCounter > player.dropInterval) {
-    playerDrop();
+  
+  if (gameActive) {
+    dropCounter += deltaTime;
+    if (dropCounter > player.dropInterval) {
+      playerDrop();
+    }
   }
+  
   draw();
   requestAnimationFrame(update);
 }
@@ -148,5 +177,5 @@ document.addEventListener('keydown', event => {
   else if (event.key === 'w') playerRotate(1);
 });
 
-playerReset();
-update();
+// playerReset();
+// update();
